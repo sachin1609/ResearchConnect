@@ -1,0 +1,23 @@
+{% extends "users/base.html" %}
+{% block title %} Home Page {% endblock title%}
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to Oxford Brookes Research</h1>
+        <h2>{{user.first_name.title|default:'Guest'}}</h2>
+        <p class="lead">
+            At <b>Oxford Brookes University</b>, we are dedicated to pushing the boundaries of knowledge 
+            through cutting-edge research across various disciplines. Our research community 
+            comprises passionate scholars, scientists, and innovators who are committed to 
+            addressing global challenges and advancing human understanding.
+        </p>
+        <hr class="my-4">
+        <p class="lead">
+            {% if user.is_authenticated %}
+                <a class="btn btn-primary btn-lg" href="{% url 'logout' %}" role="button">Logout</a>
+            {% else %}
+                <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Sign in</a>
+            {% endif %}
+        </p>
+    </div>
+
+{% endblock content %}
